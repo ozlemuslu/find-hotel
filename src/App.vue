@@ -1,22 +1,28 @@
 <template>
-  <div id="app">
-    <find-hotels />
+  <div id="app" class="container">
+    <div class="d-flex justify-content-between">
+      <div class="hotel-icon" @click="$router.push({ name: 'FindHotels' })">
+        <img src="./assets/hotel.png" alt="" />
+      </div>
+      <button
+        type="button"
+        class="btn btn-primary"
+        @click="$router.push({ name: 'AddHotels' })"
+      >
+        {{ $t("hotels.addHotel") }}
+      </button>
+    </div>
     <router-view />
   </div>
 </template>
 
 <script>
-import FindHotels from "./views/FindHotels.vue";
-
 export default {
   name: "App",
-  components: {
-    FindHotels,
-  },
 };
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -24,5 +30,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.hotel-icon {
+  cursor: pointer;
 }
 </style>

@@ -8,6 +8,7 @@ export default {
         quit: 'Çıkış',
       },
       hotels: {
+        addHotel: 'Otel Ekle'
       },
     },
     en: {
@@ -19,6 +20,7 @@ export default {
         quit: 'Quit',
       },
       hotels: {
+        addHotel: 'Add Hotel'
       },
     },
   }

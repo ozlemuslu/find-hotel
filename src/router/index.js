@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/hotels',
+    path: '/',
     name: 'FindHotels',
     component: FindHotels,
   },

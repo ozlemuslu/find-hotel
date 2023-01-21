@@ -35,7 +35,7 @@
         "vue/order-in-components": "error",
         "vue/html-self-closing": ["error", {
           "html": {
-            "void": "never",
+            "void": "any",
             "normal": "any",
             "component": "always"
           },

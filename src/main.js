@@ -5,6 +5,8 @@ import store from './store';
 import messages from './locale/i18n';
 import router from './router'
 import VModal from 'vue-js-modal';
+import 'bootstrap';
+import './sass/_main.scss'
 
 Vue.use(VueI18n);
 Vue.use(VModal, { dynamic: true, dialog: true });

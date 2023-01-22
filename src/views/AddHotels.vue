@@ -80,6 +80,10 @@ export default {
         saveDateTime: new Date().getTime(),
         hotelRate: this.hotelRate,
       };
+
+      if (localStorage.getItem("HOTEL_LIST")) {
+        this.hotelList = JSON.parse(localStorage.getItem("HOTEL_LIST"));
+      }
       this.hotelList.push(hotel);
       localStorage.setItem("HOTEL_LIST", JSON.stringify(this.hotelList));
       this.showAddedButton = true;

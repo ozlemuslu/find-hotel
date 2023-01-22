@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="hotel in hotelList" :key="hotel.id" class="row mb-3">
+    <div v-for="hotel in pageOfItems" :key="hotel.id" class="row mb-3">
       <div class="col-12 col-lg-4 hotel-image-wrapper">
         <img class="w-100" src="../assets/hotelImage.png" alt="" />
       </div>
@@ -32,6 +32,14 @@
         </div>
       </div>
     </div>
+    <div class="card-footer pb-3 pt-3">
+      <jw-pagination
+        :items="hotelList"
+        :labels="customLabels"
+        :pageSize="pageSize"
+        @changePage="onChangePage"
+      />
+    </div>
   </div>
 </template>
 
@@ -41,10 +49,23 @@ export default {
   data() {
     return {
       hotelList: [],
+      pageOfItems: [],
+      customLabels: {
+        first: "<<",
+        last: ">>",
+        previous: "<",
+        next: ">",
+      },
+      pageSize: 5,
     };
   },
   created() {
     this.hotelList = JSON.parse(localStorage.getItem("HOTEL_LIST"));
+  },
+  methods: {
+    onChangePage(pageOfItems) {
+      this.pageOfItems = pageOfItems;
+    },
   },
 };
 </script>

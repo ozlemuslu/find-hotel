@@ -7,9 +7,11 @@ import router from './router'
 import VModal from 'vue-js-modal';
 import 'bootstrap';
 import './sass/_main.scss'
+import JwPagination from 'jw-vue-pagination';
 
 Vue.use(VueI18n);
 Vue.use(VModal, { dynamic: true, dialog: true });
+Vue.component('jw-pagination', JwPagination);
 
 const i18n = new VueI18n({
   locale: 'tr', 

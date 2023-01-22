@@ -1,10 +1,11 @@
 <template>
   <div id="app" class="container">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between pb-5">
       <div class="hotel-icon" @click="$router.push({ name: 'FindHotels' })">
-        <img src="./assets/hotel.png" alt="" />
+        <img src="./assets/ets.png" alt="" />
       </div>
       <button
+        v-if="showAddHotelButton"
         type="button"
         class="btn btn-primary"
         @click="$router.push({ name: 'AddHotels' })"
@@ -19,6 +20,21 @@
 <script>
 export default {
   name: "App",
+  data() {
+    return {
+      showAddHotelButton: true,
+    };
+  },
+  watch: {
+    $route() {
+      debugger;
+      this.showAddHotelButton =
+        !window.location.pathname.includes("add-hotels");
+    },
+  },
+  created() {
+    this.showAddHotelButton = !window.location.pathname.includes("add-hotels");
+  },
 };
 </script>
 
@@ -29,7 +45,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 24px;
 }
 
 .hotel-icon {

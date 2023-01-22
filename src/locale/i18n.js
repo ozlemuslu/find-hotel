@@ -6,9 +6,14 @@ export default {
         save: 'Kaydet',
         cancel: 'Vazgeç',
         quit: 'Çıkış',
+        add: 'Ekle'
       },
       hotels: {
-        addHotel: 'Otel Ekle'
+        addHotel: 'Otel Ekle',
+      },
+      addHotels: {
+        hotelName: 'Otel Adı',
+        hotelAddress: 'Otel Adresi'
       },
     },
     en: {
@@ -18,9 +23,14 @@ export default {
         save: 'Save',
         cancel: 'Cancel',
         quit: 'Quit',
+        add: 'Add'
       },
       hotels: {
         addHotel: 'Add Hotel'
+      },
+      addHotels: {
+        hotelName: 'Hotel Name',
+        hotelAddress: 'Hotel Address'
       },
     },
   }

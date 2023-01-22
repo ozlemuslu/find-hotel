@@ -27,7 +27,6 @@ export default {
   },
   watch: {
     $route() {
-      debugger;
       this.showAddHotelButton =
         !window.location.pathname.includes("add-hotels");
     },

@@ -7,8 +7,37 @@
         background-image: linear-gradient(to left,#0a9ed2,#15b8b4) !important;
     }
     &:focus {
+        background-image: linear-gradient(to left,#0a9ed2,#15b8b4) !important;
         box-shadow: unset !important;
     }
+}
+
+.btn-secondary {
+    color:#1f2126 !important;
+    background-color: #fff !important;
+    border-color: #fff !important;
+    &:hover {
+        background-image: unset !important;
+    }
+    &:focus {
+        background-image: unset !important;
+        box-shadow: unset !important;
+    }
+    &:active {
+        background-image: unset !important;
+        box-shadow: unset !important;
+    }
+    &:focus-visible {
+        box-shadow: unset !important;
+    }
+}
+
+.btn-success {
+    border-color: unset !important;
+}
+
+.btn-outline-info {
+    box-shadow:unset !important;
 }
 
 label {

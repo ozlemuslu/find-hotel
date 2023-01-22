@@ -10,15 +10,24 @@
       <label class="d-flex justify-content-start" for="exampleInputEmail1">
         {{ $t("addHotels.hotelAddress") }}
       </label>
-      <input v-model="hotelAdress" class="form-control" type="text" />
+      <input v-model="hotelAddress" class="form-control" type="text" />
     </div>
-    <div class="d-flex justify-content-start">
+    <div class="d-flex justify-content-start pt-3">
       <button
+        v-if="!showAddedHotelButton"
         class="btn btn-primary w-100"
         :disabled="disabledSubmitButton"
         @click="addHotel()"
       >
         {{ $t("common.add") }}
+      </button>
+      <button
+        v-else
+        class="btn btn-success w-100"
+        :disabled="disabledSubmitButton"
+        @click="addHotel()"
+      >
+        {{ $t("common.added") }}
       </button>
     </div>
   </div>
@@ -31,27 +40,49 @@ export default {
     return {
       hotelList: [],
       hotelName: "",
-      hotelAdress: "",
+      hotelAddress: "",
       hotelRate: 0,
+      showAddedButton: false,
     };
   },
   computed: {
     disabledSubmitButton() {
-      return this.hotelAdress === "" || this.hotelName === "";
+      return this.hotelAddress === "" || this.hotelName === "";
+    },
+    showAddedHotelButton() {
+      return (
+        this.hotelAddress !== "" &&
+        this.hotelName !== "" &&
+        this.showAddedButton
+      );
     },
   },
+  watch: {
+    hotelName() {
+      if (this.hotelName === "") {
+        this.showAddedButton = false;
+      }
+    },
+    hotelAddress() {
+      if (this.hotelAddress === "") {
+        this.showAddedButton = false;
+      }
+    },
+  },
+
   methods: {
     addHotel() {
       const id = "id" + new Date().getTime();
       const hotel = {
         id: id,
         hotelName: this.hotelName,
-        hotelAdress: this.hotelAdress,
+        hotelAddress: this.hotelAddress,
         saveDateTime: new Date().getTime(),
         hotelRate: this.hotelRate,
       };
       this.hotelList.push(hotel);
       localStorage.setItem("HOTEL_LIST", JSON.stringify(this.hotelList));
+      this.showAddedButton = true;
     },
   },
 };

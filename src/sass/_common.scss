@@ -1,0 +1,33 @@
+.btn-primary {
+    color: #fff !important;
+    background-image: linear-gradient(to left,#08aeea,#17cec4) !important;
+    border-color: unset !important;
+    background-color: unset !important;
+    &:hover {
+        background-image: linear-gradient(to left,#0a9ed2,#15b8b4) !important;
+    }
+    &:focus {
+        box-shadow: unset !important;
+    }
+}
+
+label {
+    font-size: 18px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.44;
+    letter-spacing: normal;
+    color: #1f2126;
+}
+
+input {
+    border: 1px solid #dbe0e6;
+    background-color: #f6f9fd;
+    border-radius: 4px;
+}
+
+.form-control {
+    border-color: unset !important;
+    box-shadow: unset !important;
+}

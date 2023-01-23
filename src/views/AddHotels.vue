@@ -62,9 +62,9 @@ export default {
         active: false,
       };
 
-      if (!localStorage.getItem("HOTEL_LIST")) return;
-
-      this.hotelList = JSON.parse(localStorage.getItem("HOTEL_LIST"));
+      if (localStorage.getItem("HOTEL_LIST")) {
+        this.hotelList = JSON.parse(localStorage.getItem("HOTEL_LIST"));
+      }
       this.hotelList.push(hotel);
       this.showAddedHotelButton = true;
       localStorage.setItem("HOTEL_LIST", JSON.stringify(this.hotelList));

@@ -11,7 +11,8 @@ export default {
         point: 'Puan',
         sortBy: 'Sırala',
         increasing: 'Artan',
-        decsending: 'Azalan'
+        decsending: 'Azalan',
+        erase: 'Sil'
       },
       hotels: {
         addHotel: 'Otel Ekle',
@@ -44,7 +45,8 @@ export default {
         hotelName: 'Hotel Name',
         hotelAddress: 'Hotel Address',
         increasePoint: 'Increase Point',
-        decreasePoint: 'Decrease Point'
+        decreasePoint: 'Decrease Point',
+        erase: 'Erase'
       },
     },
   }

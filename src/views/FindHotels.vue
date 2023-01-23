@@ -1,7 +1,10 @@
 <template>
   <div>
-    <sort-by />
-    <card />
+    <sort-by
+      @sortByDescendingHotelPoint="$refs.hotelCard.sortByDescendingHotelPoint()"
+      @sortByAscendingHotelPoint="$refs.hotelCard.sortByAscendingHotelPoint()"
+    />
+    <card ref="hotelCard" />
   </div>
 </template>
 

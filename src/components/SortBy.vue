@@ -15,14 +15,20 @@
             {{ $t("common.sortBy") }}
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">
+            <div
+              class="dropdown-item"
+              @click="$emit('sortByAscendingHotelPoint')"
+            >
               {{ $t("common.point") }}
               {{ $t("common.increasing") }}
-            </a>
-            <a class="dropdown-item" href="#">
+            </div>
+            <div
+              class="dropdown-item"
+              @click="$emit('sortByDescendingHotelPoint')"
+            >
               {{ $t("common.point") }}
               {{ $t("common.decsending") }}
-            </a>
+            </div>
           </div>
         </div>
       </div>
@@ -35,5 +41,8 @@
   border-radius: 6px;
   box-shadow: 0 1px 5px 0 rgb(0 0 0 / 15%);
   background-color: #fff;
+}
+.dropdown-item {
+  cursor: pointer;
 }
 </style>

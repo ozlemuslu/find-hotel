@@ -41,7 +41,7 @@ export default {
       hotelList: [],
       hotelName: "",
       hotelAddress: "",
-      hotelRate: 0,
+      hotelPoint: 0,
       showAddedButton: false,
     };
   },
@@ -78,7 +78,7 @@ export default {
         hotelName: this.hotelName,
         hotelAddress: this.hotelAddress,
         saveDateTime: new Date().getTime(),
-        hotelRate: this.hotelRate,
+        hotelPoint: this.hotelPoint,
       };
 
       if (localStorage.getItem("HOTEL_LIST")) {

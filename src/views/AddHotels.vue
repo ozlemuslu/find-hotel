@@ -1,5 +1,6 @@
 <template>
   <div>
+    <success-modal @closeModal="closeModal()" />
     <div class="form-group">
       <label class="d-flex justify-content-start" for="exampleInputEmail1">
         {{ $t("addHotels.hotelName") }}
@@ -21,12 +22,7 @@
       >
         {{ $t("common.add") }}
       </button>
-      <button
-        v-else
-        class="btn btn-success w-100"
-        :disabled="disabledSubmitButton"
-        @click="addHotel()"
-      >
+      <button v-else class="btn btn-success w-100">
         {{ $t("common.added") }}
       </button>
     </div>
@@ -34,62 +30,55 @@
 </template>
 
 <script>
+import SuccessModal from "../components/modals/SuccessModal.vue";
+
 export default {
   name: "AddHotels",
+  components: { SuccessModal },
   data() {
     return {
       hotelList: [],
       hotelName: "",
       hotelAddress: "",
       hotelPoint: 0,
-      showAddedButton: false,
+      showAddedHotelButton: false,
     };
   },
   computed: {
     disabledSubmitButton() {
       return this.hotelAddress === "" || this.hotelName === "";
     },
-    showAddedHotelButton() {
-      return (
-        this.hotelAddress !== "" &&
-        this.hotelName !== "" &&
-        this.showAddedButton
-      );
-    },
   },
-  watch: {
-    hotelName() {
-      if (this.hotelName === "") {
-        this.showAddedButton = false;
-      }
-    },
-    hotelAddress() {
-      if (this.hotelAddress === "") {
-        this.showAddedButton = false;
-      }
-    },
-  },
-
   methods: {
     addHotel() {
       const id = "id" + new Date().getTime();
+
       const hotel = {
         id: id,
         hotelName: this.hotelName,
         hotelAddress: this.hotelAddress,
         saveDateTime: new Date().getTime(),
         hotelPoint: this.hotelPoint,
+        active: false,
       };
 
-      if (localStorage.getItem("HOTEL_LIST")) {
-        this.hotelList = JSON.parse(localStorage.getItem("HOTEL_LIST"));
-      }
+      if (!localStorage.getItem("HOTEL_LIST")) return;
+
+      this.hotelList = JSON.parse(localStorage.getItem("HOTEL_LIST"));
       this.hotelList.push(hotel);
+      this.showAddedHotelButton = true;
       localStorage.setItem("HOTEL_LIST", JSON.stringify(this.hotelList));
-      this.showAddedButton = true;
+      this.openSuccessModal();
+    },
+    openSuccessModal() {
+      this.$modal.show("successModal");
+    },
+    closeModal() {
+      this.hotelAddress = "";
+      this.hotelName = "";
+      this.showAddedHotelButton = false;
+      this.$modal.hide("successModal");
     },
   },
 };
 </script>
-
-<style></style>

@@ -12,16 +12,19 @@ export default {
         sortBy: 'Sırala',
         increasing: 'Artan',
         decsending: 'Azalan',
-        erase: 'Sil'
+        erase: 'Sil',
+        eraseConfirm: 'Silmek istediğinize emin misiniz ?'
       },
       hotels: {
         addHotel: 'Otel Ekle',
+        noHotel: 'Kayıtlı otel bulunmamaktadır, lütfen otel ekleyin.'
       },
       addHotels: {
         hotelName: 'Otel Adı',
         hotelAddress: 'Otel Adresi',
         increasePoint: 'Puan Artır',
-        decreasePoint: 'Puan Azalt'
+        decreasePoint: 'Puan Azalt',
+        successModal: 'Otel başarılı şekilde eklendi'
       },
     },
     en: {
@@ -36,17 +39,20 @@ export default {
         point: 'Point',
         sortBy: 'Sort By',
         increasing: 'Increasing',
-        decsending: 'Decsending'
+        decsending: 'Decsending',
+        erase: 'Erase',
+        eraseConfirm: 'Are you sure to erase ?'
       },
       hotels: {
-        addHotel: 'Add Hotel'
+        addHotel: 'Add Hotel',
+        noHotel: 'There are no hotels registered, please add a hotel.'
       },
       addHotels: {
         hotelName: 'Hotel Name',
         hotelAddress: 'Hotel Address',
         increasePoint: 'Increase Point',
         decreasePoint: 'Decrease Point',
-        erase: 'Erase'
+        successModal: 'Hotel successfully added'
       },
     },
   }

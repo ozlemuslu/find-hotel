@@ -35,14 +35,3 @@
     </div>
   </div>
 </template>
-
-<style lang="scss">
-.sort-by-wrapper {
-  border-radius: 6px;
-  box-shadow: 0 1px 5px 0 rgb(0 0 0 / 15%);
-  background-color: #fff;
-}
-.dropdown-item {
-  cursor: pointer;
-}
-</style>

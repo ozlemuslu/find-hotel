@@ -6,8 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     availableLocales: {
-      tr: 'Türkçe',
-      en: 'English',
+      tr: 'TR',
+      en: 'EN',
     },
     user: {},    
   },

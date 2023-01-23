@@ -1,61 +1,66 @@
 <template>
   <div>
-    <erase-confirm-modal />
-    <div v-for="hotel in pageOfItems" :key="hotel.id" class="row mb-3">
-      <div class="col-12 col-lg-4 hotel-image-wrapper">
-        <img class="w-100" src="../assets/hotelImage.png" alt="" />
-      </div>
-      <div class="col-12 col-lg-8">
-        <div class="card h-100 card-info-wrapper">
-          <div class="d-flex justify-content-end pr-1 pt-2">
-            <button
-              class="btn btn-danger mr-2"
-              @click="openConfirmEraseModal(hotel.id)"
-            >
-              {{ $t("common.erase") }}
-            </button>
-          </div>
-          <div class="card-body d-flex">
-            <div class="col-6 p-0">
-              <h5 class="card-title d-flex justify-content-start">
-                {{ hotel.hotelName }}
-              </h5>
-              <div class="d-flex justify-content-start">
-                {{ hotel.hotelAddress }}
+    <erase-confirm-modal @eraseHotel="eraseHotel()" />
+    <div v-if="hotelList.length">
+      <div v-for="hotel in pageOfItems" :key="hotel.id" class="row mb-3">
+        <div class="col-12 col-lg-4 hotel-image-wrapper">
+          <img class="w-100" src="../assets/hotelImage.png" alt="" />
+        </div>
+        <div class="col-12 col-lg-8">
+          <div class="card h-100 card-info-wrapper">
+            <div class="d-flex justify-content-end pr-1 pt-2">
+              <button
+                class="btn btn-danger mr-2"
+                @click="openConfirmEraseModal(hotel.id)"
+              >
+                {{ $t("common.erase") }}
+              </button>
+            </div>
+            <div class="card-body d-flex">
+              <div class="col-6 p-0">
+                <h5 class="card-title d-flex justify-content-start">
+                  {{ hotel.hotelName }}
+                </h5>
+                <div class="d-flex justify-content-start">
+                  {{ hotel.hotelAddress }}
+                </div>
+              </div>
+              <div class="col-6 d-flex justify-content-end">
+                <div class="d-flex justify-content-start">
+                  {{ hotel.hotelPoint }} {{ $t("common.point") }}
+                </div>
               </div>
             </div>
-            <div class="col-6 d-flex justify-content-end">
-              <div class="d-flex justify-content-start">
-                {{ hotel.hotelPoint }} {{ $t("common.point") }}
-              </div>
+            <div class="d-flex justify-content-start rating-buttons">
+              <button
+                type="button"
+                class="btn btn-outline-info mr-2"
+                @click="increasePoint(hotel.hotelPoint, hotel.id)"
+              >
+                {{ $t("addHotels.increasePoint") }}
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-info"
+                @click="decreasePoint(hotel.hotelPoint, hotel.id)"
+              >
+                {{ $t("addHotels.decreasePoint") }}
+              </button>
             </div>
-          </div>
-          <div class="d-flex justify-content-start rating-buttons">
-            <button
-              type="button"
-              class="btn btn-outline-info mr-2"
-              @click="increasePoint(hotel.hotelPoint, hotel.id)"
-            >
-              {{ $t("addHotels.increasePoint") }}
-            </button>
-            <button
-              type="button"
-              class="btn btn-outline-info"
-              @click="decreasePoint(hotel.hotelPoint, hotel.id)"
-            >
-              {{ $t("addHotels.decreasePoint") }}
-            </button>
           </div>
         </div>
       </div>
+      <div class="pb-3 pt-3">
+        <jw-pagination
+          :items="hotelList"
+          :labels="customLabels"
+          :page-size="pageSize"
+          @changePage="onChangePage"
+        />
+      </div>
     </div>
-    <div class="card-footer pb-3 pt-3">
-      <jw-pagination
-        :items="hotelList"
-        :labels="customLabels"
-        :page-size="pageSize"
-        @changePage="onChangePage"
-      />
+    <div v-else>
+      {{ $t("hotels.noHotel") }}
     </div>
   </div>
 </template>
@@ -77,6 +82,7 @@ export default {
       },
       pageSize: 5,
       hotelPoint: null,
+      eraseHotelId: null,
     };
   },
   created() {
@@ -132,35 +138,20 @@ export default {
       });
     },
     openConfirmEraseModal(hotelId) {
-      this.$modal.show("eraseConfirmModal", hotelId);
+      this.eraseHotelId = hotelId;
+      this.$modal.show("eraseConfirmModal");
+    },
+    eraseHotel() {
+      this.hotelList = this.hotelList.filter(
+        (item) => item.id !== this.eraseHotelId
+      );
+      this.sortByDescendingHotelPoint();
+      localStorage.setItem("HOTEL_LIST", JSON.stringify(this.hotelList));
+      this.$modal.hide("eraseConfirmModal");
+    },
+    hotelListLength() {
+      return this.hotelList.length > 1;
     },
   },
 };
 </script>
-
-<style lang="scss">
-.hotel-image-wrapper {
-  img {
-    border-radius: 6px;
-  }
-}
-
-.card-info-wrapper {
-  border-radius: 6px;
-  box-shadow: 0 1px 5px 0 rgb(0 0 0 / 15%);
-  background-color: #fff;
-}
-
-.rating-buttons {
-  margin-top: auto;
-  padding: 1.25rem;
-}
-
-.erase-btn {
-  font-size: 30px;
-  font-weight: bold;
-  color: #000;
-  cursor: pointer;
-  height: 10px;
-}
-</style>

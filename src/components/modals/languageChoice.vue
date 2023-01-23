@@ -1,36 +1,26 @@
 <template>
   <modal name="languageChoice" width="400" height="auto">
-    <div class="margin-modal">
-      <div>
-        <div>
-          <strong>{{ $t("navbar.languageChoice") }}</strong>
+    <div class="modal-body">
+      <div v-for="lang in availableLang" :key="lang">
+        <div class="d-flex justify-content-start p-1">
+          <input v-model="picked" type="radio" :value="lang" class="mr-1" />
+          {{ lang }}
         </div>
       </div>
-      <br />
-      <div class="modal-body">
-        <div v-for="lang in availableLang" :key="lang">
-          <label class="clickable">
-            <input v-model="picked" type="radio" name="radio" :value="lang" />
-            {{ lang }} </label
-          ><br />
-        </div>
-        <br />
-      </div>
-      <div class="modal-footer">
-        <button class="is-pulled-right button success" @click="save">
+      <div class="d-flex justify-content-center mt-3">
+        <button type="button" class="btn btn-outline-info mr-2" @click="save()">
           {{ $t("common.save") }}
         </button>
-        <button class="is-pulled-left button quit" @click="close">
+        <button type="button" class="btn btn-outline-info" @click="close()">
           {{ $t("common.quit") }}
         </button>
       </div>
     </div>
-    <br />
   </modal>
 </template>
 <script>
 export default {
-  name: "languageChoice",
+  name: "LanguageChoice",
   data() {
     return {
       picked: this.$store.state.availableLocales[this.$i18n.locale],

@@ -13,7 +13,8 @@ export default {
         increasing: 'Artan',
         decsending: 'Azalan',
         erase: 'Sil',
-        eraseConfirm: 'Silmek istediğinize emin misiniz ?'
+        eraseConfirm: 'Silmek istediğinize emin misiniz ?',
+        backToHomePage: 'Listeye Dön',
       },
       hotels: {
         addHotel: 'Otel Ekle',
@@ -41,7 +42,8 @@ export default {
         increasing: 'Increasing',
         decsending: 'Decsending',
         erase: 'Erase',
-        eraseConfirm: 'Are you sure to erase ?'
+        eraseConfirm: 'Are you sure to erase ?',
+        backToHomePage: 'Back to The List',
       },
       hotels: {
         addHotel: 'Add Hotel',

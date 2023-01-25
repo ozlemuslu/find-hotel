@@ -22,6 +22,14 @@
         >
           {{ $t("hotels.addHotel") }}
         </button>
+        <button
+          v-if="!showAddHotelButton"
+          type="button"
+          class="btn btn-primary"
+          @click="$router.push({ name: 'FindHotels' })"
+        >
+          {{ $t("common.backToHomePage") }}
+        </button>
       </div>
     </div>
     <router-view />

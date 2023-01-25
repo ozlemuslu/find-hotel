@@ -3,11 +3,9 @@
     <erase-confirm-modal @eraseHotel="eraseHotel()" />
     <div v-if="hotelList.length">
       <div
-        v-for="(hotel, index) in pageOfItems"
+        v-for="hotel in pageOfItems"
         :key="hotel.id"
         class="row mb-3 card-hotel mx-0"
-        @mouseover="mouseover(index)"
-        @mouseleave="mouseleave(index)"
       >
         <div class="col-lg-4 col-xs-12 hotel-image-wrapper p-0">
           <img class="w-100" src="../assets/hotelImage.png" alt="" />
@@ -168,12 +166,6 @@ export default {
     },
     hotelListLength() {
       return this.hotelList.length > 1;
-    },
-    mouseover(index) {
-      return (this.hotelList[index].active = true);
-    },
-    mouseleave(index) {
-      return (this.hotelList[index].active = false);
     },
   },
 };

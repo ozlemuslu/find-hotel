@@ -61,6 +61,37 @@ input {
     box-shadow: unset !important;
 }
 
+.rating-box {
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.rating-first {
+    background-color:  #009900;
+    color: #fff;
+}
+
+.rating-second {
+    background-color: #009966;
+    color: #fff;
+}
+
+.rating-third {
+    background-color: #009999;
+    color: #fff;
+}
+
+.rating-forth {
+    background-color:  #cc6633;
+    color: #fff;
+}
+.rating-fifth {
+    background-color:  #dc3545;
+    color: #fff;
+}
 .sort-by-wrapper {
     border-radius: 6px;
     box-shadow: 0 1px 5px 0 rgb(0 0 0 / 15%);
@@ -73,6 +104,10 @@ input {
   .hotel-icon {
     cursor: pointer;
   }
+
+  .card-hotel:hover{
+    box-shadow: 0 10px 20px rgba(0,0,0,.20), 0 8px 8px rgba(0,0,0,.20);
+   }
 
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;

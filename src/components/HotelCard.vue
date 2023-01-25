@@ -5,58 +5,66 @@
       <div
         v-for="(hotel, index) in pageOfItems"
         :key="hotel.id"
-        class="row mb-3"
+        class="row mb-3 card-hotel mx-0"
         @mouseover="mouseover(index)"
         @mouseleave="mouseleave(index)"
       >
-        <div class="col-12 col-lg-4 hotel-image-wrapper">
+        <div class="col-lg-4 col-xs-12 hotel-image-wrapper p-0">
           <img class="w-100" src="../assets/hotelImage.png" alt="" />
         </div>
-        <div class="col-12 col-lg-7">
+        <div class="col-lg-8 col-xs-12 p-0">
           <div class="card h-100 card-info-wrapper">
-            <div class="card-body d-flex">
-              <div class="col-6 p-0">
-                <h5 class="card-title d-flex justify-content-start">
+            <div class="card-body d-flex justify-content-between">
+              <div class="p-0">
+                <h5 class="card-title">
                   {{ hotel.hotelName }}
                 </h5>
                 <div class="d-flex justify-content-start">
                   {{ hotel.hotelAddress }}
                 </div>
               </div>
-              <div class="col-6 d-flex justify-content-end">
-                <div class="d-flex justify-content-start">
-                  {{ hotel.hotelPoint }} {{ $t("common.point") }}
+              <div class="">
+                <div
+                  class="rating p-2 rating-box"
+                  :class="{
+                    'rating-fifth': hotel.hotelPoint <= 2,
+                    'rating-forth': hotel.hotelPoint <= 4,
+                    'rating-third': hotel.hotelPoint <= 6,
+                    'rating-second': hotel.hotelPoint <= 8,
+                    'rating-first': hotel.hotelPoint <= 10,
+                  }"
+                >
+                  {{ hotel.hotelPoint }}
                 </div>
               </div>
             </div>
-            <div class="d-flex justify-content-start rating-buttons">
-              <button
-                type="button"
-                class="btn btn-outline-info mr-2"
-                @click="increasePoint(hotel.hotelPoint, hotel.id)"
-              >
-                {{ $t("addHotels.increasePoint") }}
-              </button>
-              <button
-                type="button"
-                class="btn btn-outline-info"
-                @click="decreasePoint(hotel.hotelPoint, hotel.id)"
-              >
-                {{ $t("addHotels.decreasePoint") }}
-              </button>
+            <div class="d-flex justify-content-between rating-buttons">
+              <div>
+                <button
+                  type="button"
+                  class="btn btn-outline-success mr-2"
+                  @click="increasePoint(hotel.hotelPoint, hotel.id)"
+                >
+                  {{ $t("addHotels.increasePoint") }}
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-danger"
+                  @click="decreasePoint(hotel.hotelPoint, hotel.id)"
+                >
+                  {{ $t("addHotels.decreasePoint") }}
+                </button>
+              </div>
+              <div class="d-flex col-lg-1 pr-1">
+                <button
+                  class="btn btn-danger mr-2"
+                  @click="openConfirmEraseModal(hotel.id)"
+                >
+                  {{ $t("common.erase") }}
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div
-          v-if="hotel.active"
-          class="d-flex justify-content-end col-lg-1 pr-1 pt-2"
-        >
-          <button
-            class="btn btn-danger mr-2"
-            @click="openConfirmEraseModal(hotel.id)"
-          >
-            {{ $t("common.erase") }}
-          </button>
         </div>
       </div>
       <div class="pb-3 pt-3">

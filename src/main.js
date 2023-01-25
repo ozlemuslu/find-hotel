@@ -8,6 +8,8 @@ import VModal from 'vue-js-modal';
 import 'bootstrap';
 import './sass/_main.scss'
 import JwPagination from 'jw-vue-pagination';
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
 
 Vue.use(VueI18n);
 Vue.use(VModal, { dynamic: true, dialog: true });

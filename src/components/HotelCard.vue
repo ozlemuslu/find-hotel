@@ -53,13 +53,11 @@
                   {{ $t("addHotels.decreasePoint") }}
                 </button>
               </div>
-              <div class="d-flex col-lg-1 pr-1">
-                <button
-                  class="btn btn-danger mr-2"
-                  @click="openConfirmEraseModal(hotel.id)"
-                >
-                  {{ $t("common.erase") }}
-                </button>
+              <div
+                class="d-flex col-lg-1 pr-1 erase-icon justify-content-center align-items-center"
+                @click="openConfirmEraseModal(hotel.id)"
+              >
+                <i class="fa-solid fa-trash-can"></i>
               </div>
             </div>
           </div>

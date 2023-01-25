@@ -109,6 +109,10 @@ input {
     box-shadow: 0 10px 20px rgba(0,0,0,.20), 0 8px 8px rgba(0,0,0,.20);
    }
 
+   .erase-icon {
+    cursor: pointer;
+   }
+
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
